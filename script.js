@@ -2,7 +2,7 @@
 const SHEET_ID = '1kB4IgotF8KXPB_JZa9ouX-7Qqj1kdqh3';
 const FIRST_LEG_SHEET_NAME = 'First Leg';
 const SECOND_LEG_SHEET_NAME = 'Second Leg';
-const API_KEY = 'YOUR_API_KEY'; // Get from Google Cloud Console
+// const API_KEY = 'YOUR_API_KEY'; // Get from Google Cloud Console
 
 // Function to fetch data from Google Sheets
 async function fetchSheetData(sheetName) {
