@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EAFC25 Fixtures & Scores</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>EAFC25 Tournament Fixtures</h1>
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('first-leg')">First Leg</button>
+            <button class="tab-button" onclick="showTab('second-leg')">Second Leg</button>
+        </div>
+    </header>
+
+    <main>
+        <div id="first-leg" class="tab-content active">
+            <table id="first-leg-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Matchday</th>
+                        <th>Home Team</th>
+                        <th>Score</th>
+                        <th>Away Team</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be inserted by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="second-leg" class="tab-content">
+            <table id="second-leg-table">
+                <thead>
+                    <tr>
+						<th>Date</th>
+                        <th>Matchday</th>
+                        <th>Home Team</th>
+                        <th>Score</th>
+                        <th>Away Team</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be inserted by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 EAFC25 Tournament. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
