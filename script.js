@@ -1,6 +1,5 @@
 // Google Sheets ID and API configuration
 const SHEET_ID = '1kB4IgotF8KXPB_JZa9ouX-7Qqj1kdqh3';
-const API_KEY = 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'; // Note: In production, this should be secured
 const FIRST_LEG_SHEET_NAME = 'First Leg';
 const SECOND_LEG_SHEET_NAME = 'Second Leg';
 
