@@ -1,76 +1,5 @@
-// Sample data - replace with your actual league data
-const leagueData = [
-    {
-        team: "Mancity Jnr",
-        played: 7,
-        won: 6,
-        drawn: 1,
-        lost: 0,
-        goalsFor: 18,
-        goalsAgainst: 5,
-        form: ['W', 'W', 'D', 'W', 'W']
-    },
-    {
-        team: "NiceFC",
-        played: 7,
-        won: 5,
-        drawn: 1,
-        lost: 1,
-        goalsFor: 15,
-        goalsAgainst: 7,
-        form: ['W', 'W', 'L', 'W', 'D']
-    },
-    {
-        team: "dblinking",
-        played: 7,
-        won: 4,
-        drawn: 2,
-        lost: 1,
-        goalsFor: 12,
-        goalsAgainst: 6,
-        form: ['W', 'D', 'W', 'L', 'W']
-    },
-    {
-        team: "OLAMIX FC",
-        played: 7,
-        won: 4,
-        drawn: 1,
-        lost: 2,
-        goalsFor: 14,
-        goalsAgainst: 9,
-        form: ['L', 'W', 'W', 'D', 'W']
-    },
-    {
-        team: "ADX FC",
-        played: 7,
-        won: 3,
-        drawn: 2,
-        lost: 2,
-        goalsFor: 10,
-        goalsAgainst: 8,
-        form: ['D', 'W', 'L', 'W', 'D']
-    },
-    {
-        team: "Barnet FC",
-        played: 7,
-        won: 2,
-        drawn: 1,
-        lost: 4,
-        goalsFor: 8,
-        goalsAgainst: 12,
-        form: ['L', 'W', 'D', 'L', 'L']
-    },
-    {
-        team: "Mehhh",
-        played: 7,
-        won: 0,
-        drawn: 0,
-        lost: 7,
-        goalsFor: 2,
-        goalsAgainst: 22,
-        form: ['L', 'L', 'L', 'L', 'L']
-    }
-];
+// This will be populated from the main script.js
+let leagueData = [];
 
 // Calculate additional stats and sort
 function processLeagueData(data) {
@@ -100,10 +29,10 @@ function generateFormIcons(formArray) {
     }).join('');
 }
 
-// Populate the league table
-function populateLeagueTable() {
-    const processedData = processLeagueData(leagueData);
-    const tableBody = document.querySelector('.league-table tbody');
+// Populate the league table with updated data
+function populateLeagueTable(teamsData) {
+    const processedData = processLeagueData(teamsData);
+    const tableBody = document.querySelector('#league-table tbody');
     
     tableBody.innerHTML = processedData.map((team, index) => {
         // Add qualification/relegation classes
@@ -124,13 +53,35 @@ function populateLeagueTable() {
                 <td>${team.goalsAgainst}</td>
                 <td class="gd-cell">${team.goalDifference > 0 ? '+' : ''}${team.goalDifference}</td>
                 <td class="pts-cell">${team.points}</td>
-                <td class="form-cell">${generateFormIcons(team.form)}</td>
+                <td class="form-cell">${generateFormIcons(team.form.slice(0, 5))}</td>
             </tr>
         `;
     }).join('');
 }
 
-// Initialize the page
+// Function to update the table from external script
+function updateLeagueStandings(teams) {
+    leagueData = Object.values(teams);
+    populateLeagueTable(leagueData);
+}
+
+// Initialize with empty data if needed
 document.addEventListener('DOMContentLoaded', () => {
-    populateLeagueTable();
+    if (leagueData.length === 0) {
+        // Initialize with empty table if no data passed
+        document.querySelector('#league-table tbody').innerHTML = `
+            <tr>
+                <td colspan="11" style="text-align: center; padding: 2rem;">
+                    No match data available yet. Scores will appear here once entered in the fixtures.
+                </td>
+            </tr>
+        `;
+    } else {
+        populateLeagueTable(leagueData);
+    }
 });
+
+// Export function for other scripts to use
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { updateLeagueStandings };
+}
