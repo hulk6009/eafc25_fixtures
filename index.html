@@ -68,5 +68,15 @@
 
     <script src="table.js"></script>
     <script src="script.js"></script>
+    <script>
+         // Restore active tab on page load
+         document.addEventListener('DOMContentLoaded', function() {
+            const activeTab = localStorage.getItem('activeTab') || 'first-leg';
+            const tabButton = document.querySelector(`.tab-button[onclick*="${activeTab}"]`);
+            if (tabButton) {
+                tabButton.click();
+             }
+          });
+    </script>
 </body>
 </html>
