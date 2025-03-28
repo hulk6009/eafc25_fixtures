@@ -346,3 +346,20 @@ footer {
         padding: 1rem;
     }
 }
+/* Add to your existing CSS */
+.tab-content iframe {
+    width: 100%;
+    height: calc(100vh - 300px);
+    min-height: 600px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+    .tab-content iframe {
+        height: calc(100vh - 250px);
+        min-height: 500px;
+    }
+}
