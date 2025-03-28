@@ -363,3 +363,137 @@ footer {
         min-height: 500px;
     }
 }
+/* League Table Specific Styles */
+.league-table-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    overflow-x: auto;
+}
+
+.league-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.league-table th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    padding: 1rem 0.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.league-table th.team-header {
+    text-align: left;
+    padding-left: 1.5rem;
+}
+
+.league-table td {
+    padding: 0.8rem 0.5rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.league-table tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+.league-table tr:hover {
+    background-color: #f0f4ff;
+}
+
+.league-table .team-cell {
+    text-align: left;
+    padding-left: 1.5rem;
+    font-weight: 600;
+}
+
+.league-table .pos-cell {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.league-table .gd-cell {
+    font-weight: 600;
+}
+
+.league-table .pts-cell {
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+.form-cell {
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+}
+
+.form-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: white;
+}
+
+.form-win {
+    background-color: #28a745;
+}
+
+.form-draw {
+    background-color: #6c757d;
+}
+
+.form-loss {
+    background-color: #dc3545;
+}
+
+/* Champions League qualification highlight */
+.cl {
+    border-left: 3px solid #1a2a6c;
+}
+
+/* Europa League qualification highlight */
+.el {
+    border-left: 3px solid #b21f1f;
+}
+
+/* Relegation highlight */
+.relegation {
+    border-left: 3px solid #dc3545;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .league-table th, 
+    .league-table td {
+        padding: 0.6rem 0.3rem;
+        font-size: 0.8rem;
+    }
+    
+    .league-table th.team-header {
+        padding-left: 0.8rem;
+    }
+    
+    .league-table .team-cell {
+        padding-left: 0.8rem;
+    }
+    
+    .form-icon {
+        width: 16px;
+        height: 16px;
+        font-size: 0.6rem;
+    }
+}
