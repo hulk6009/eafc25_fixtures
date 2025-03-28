@@ -1,7 +1,7 @@
 // Data from your Excel file
 const firstLegData = [
     ["Friday 28th March", "Matchday 1", "Mancity Jnr", "", "", "NiceFC"],
-    ["Friday 28th March", "Matchday 1", "dblinking", "", "", "Mehhh"],
+    ["Friday 28th March", "Matchday 1", "dblinking", "3", "2", "Mehhh"],
     ["Friday 28th March", "Matchday 1", "OLAMIX FC", "", "", "Barnet FC"],
     ["Friday 28th March", "Matchday 2", "Mancity Jnr", "", "", "dblinking"],
     ["Friday 28th March", "Matchday 2", "NiceFC", "", "", "Mehhh"],
@@ -11,10 +11,10 @@ const firstLegData = [
     ["Saturday 29th March", "Matchday 3", "Barnet FC", "", "", "ADX FC"],
     ["Saturday 29th March", "Matchday 4", "Mancity Jnr", "", "", "OLAMIX FC"],
     ["Saturday 29th March", "Matchday 4", "NiceFC", "", "", "Barnet FC"],
-    ["Saturday 29th March", "Matchday 4", "dblinking", "", "", "ADX FC"],
+    ["Saturday 29th March", "Matchday 4", "dblinking", "3", "7", "ADX FC"],
     ["Saturday 29th March", "Matchday 5", "Mancity Jnr", "", "", "Barnet FC"],
     ["Saturday 29th March", "Matchday 5", "NiceFC", "", "", "OLAMIX FC"],
-    ["Sunday 30th March", "Matchday 5", "Mehhh", "", "", "ADX FC"],
+    ["Sunday 30th March", "Matchday 5", "Mehhh", "4", "5", "ADX FC"],
     ["Sunday 30th March", "Matchday 6", "Mancity Jnr", "", "", "ADX FC"],
     ["Sunday 30th March", "Matchday 6", "dblinking", "", "", "OLAMIX FC"],
     ["Sunday 30th March", "Matchday 6", "Mehhh", "", "", "Barnet FC"],
@@ -24,7 +24,7 @@ const firstLegData = [
 ];
 
 const secondLegData = [
-    ["Friday 4th April", "Matchday 8", "NiceFC", "", "", "Mancity Jnr"],
+    ["Friday 4th April", "Matchday 8", "NiceFC", "10", "4", "Mancity Jnr"],
     ["Friday 4th April", "Matchday 8", "Mehhh", "", "", "dblinking"],
     ["Friday 4th April", "Matchday 8", "Barnet FC", "", "", "OLAMIX FC"],
     ["Friday 4th April", "Matchday 9", "dblinking", "", "", "Mancity Jnr"],
@@ -47,203 +47,167 @@ const secondLegData = [
     ["Sunday 6th April", "Matchday 14", "OLAMIX FC", "", "", "Mehhh"]
 ];
 
-// Function to process match results and calculate standings
-function processMatchResults() {
-    const allMatches = [...firstLegData, ...secondLegData];
-    const teams = {};
-    
-    // Initialize all teams
-    const teamNames = new Set();
-    allMatches.forEach(match => {
-        teamNames.add(match[2]); // Home team
-        teamNames.add(match[5]); // Away team
-    });
-    
-    teamNames.forEach(team => {
-        teams[team] = {
-            played: 0,
-            won: 0,
-            drawn: 0,
-            lost: 0,
-            goalsFor: 0,
-            goalsAgainst: 0,
-            form: []
-        };
-    });
-    
-    // Process all matches
-    allMatches.forEach(match => {
-        const homeTeam = match[2];
-        const awayTeam = match[5];
-        const homeScore = parseInt(match[3]) || 0;
-        const awayScore = parseInt(match[4]) || 0;
-        
-        // Only process if scores exist
-        if (match[3] !== '' && match[4] !== '') {
-            // Update home team
-            teams[homeTeam].played++;
-            teams[homeTeam].goalsFor += homeScore;
-            teams[homeTeam].goalsAgainst += awayScore;
-            
-            // Update away team
-            teams[awayTeam].played++;
-            teams[awayTeam].goalsFor += awayScore;
-            teams[awayTeam].goalsAgainst += homeScore;
-            
-            // Update wins/draws/losses
-            if (homeScore > awayScore) {
-                teams[homeTeam].won++;
-                teams[homeTeam].form.unshift('W');
-                teams[awayTeam].lost++;
-                teams[awayTeam].form.unshift('L');
-            } else if (homeScore < awayScore) {
-                teams[awayTeam].won++;
-                teams[awayTeam].form.unshift('W');
-                teams[homeTeam].lost++;
-                teams[homeTeam].form.unshift('L');
-            } else {
-                teams[homeTeam].drawn++;
-                teams[homeTeam].form.unshift('D');
-                teams[awayTeam].drawn++;
-                teams[awayTeam].form.unshift('D');
-            }
-            
-            // Keep only last 5 form results
-            if (teams[homeTeam].form.length > 5) teams[homeTeam].form.pop();
-            if (teams[awayTeam].form.length > 5) teams[awayTeam].form.pop();
-        }
-    });
-    
-    return teams;
+// Function to update all tables
+function updateAllTables() {
+    populateTables();
+    updateLeagueTable();
 }
 
-// Generate form icons
-function generateFormIcons(formArray) {
-    return formArray.map(result => {
-        let className = '';
-        if (result === 'W') className = 'form-win';
-        if (result === 'D') className = 'form-draw';
-        if (result === 'L') className = 'form-loss';
-        
-        return `<div class="form-icon ${className}">${result}</div>`;
-    }).join('');
-}
-
-// Update league table
-function updateLeagueTable() {
-    const teamsData = processMatchResults();
-    if (typeof updateLeagueStandings === 'function') {
-        updateLeagueStandings(teamsData);
-    }
-    // Save to localStorage
-    localStorage.setItem('firstLegData', JSON.stringify(firstLegData));
-    localStorage.setItem('secondLegData', JSON.stringify(secondLegData));
-}
-
-// Create editable score cell
-function createEditableScoreCell(match, homeIndex, awayIndex) {
-    const cell = document.createElement('td');
-    cell.className = 'score-cell';
-    cell.contentEditable = true;
-    cell.textContent = `${match[homeIndex] || ''} - ${match[awayIndex] || ''}`;
-    
-    cell.addEventListener('blur', function() {
-        const scores = this.textContent.split('-').map(s => s.trim());
-        match[homeIndex] = scores[0] || '';
-        match[awayIndex] = scores[1] || '';
-        updateLeagueTable();
-    });
-    
-    return cell;
-}
-
-// Populate fixture tables
+// Modified populateTables function
 function populateTables() {
     const firstLegTable = document.querySelector('#first-leg-table tbody');
     const secondLegTable = document.querySelector('#second-leg-table tbody');
 
-    // First Leg
+    // Clear existing rows
+    firstLegTable.innerHTML = '';
+    secondLegTable.innerHTML = '';
+
+    // Populate First Leg
     firstLegData.forEach(match => {
         const row = document.createElement('tr');
         
-        const dateCell = document.createElement('td');
-        dateCell.textContent = match[0];
-        dateCell.className = 'date-cell';
-        row.appendChild(dateCell);
-        
-        const matchdayCell = document.createElement('td');
-        matchdayCell.textContent = match[1];
-        matchdayCell.className = 'matchday-cell';
-        row.appendChild(matchdayCell);
-        
-        const homeTeamCell = document.createElement('td');
-        homeTeamCell.textContent = match[2];
-        row.appendChild(homeTeamCell);
-        
-        const scoreCell = createEditableScoreCell(match, 3, 4);
-        row.appendChild(scoreCell);
-        
-        const awayTeamCell = document.createElement('td');
-        awayTeamCell.textContent = match[5];
-        row.appendChild(awayTeamCell);
+        // Add cells for each match property
+        ['date', 'matchday', 'homeTeam', 'score', 'awayTeam'].forEach((type, index) => {
+            const cell = document.createElement('td');
+            
+            if (type === 'score') {
+                cell.textContent = `${match[3]} - ${match[4]}`;
+                cell.className = 'score-cell';
+            } else {
+                cell.textContent = match[index];
+                cell.className = `${type}-cell`;
+            }
+            
+            row.appendChild(cell);
+        });
         
         firstLegTable.appendChild(row);
     });
 
-    // Second Leg
+    // Populate Second Leg (same structure)
     secondLegData.forEach(match => {
         const row = document.createElement('tr');
         
-        const dateCell = document.createElement('td');
-        dateCell.textContent = match[0];
-        dateCell.className = 'date-cell';
-        row.appendChild(dateCell);
-        
-        const matchdayCell = document.createElement('td');
-        matchdayCell.textContent = match[1];
-        matchdayCell.className = 'matchday-cell';
-        row.appendChild(matchdayCell);
-        
-        const homeTeamCell = document.createElement('td');
-        homeTeamCell.textContent = match[2];
-        row.appendChild(homeTeamCell);
-        
-        const scoreCell = createEditableScoreCell(match, 3, 4);
-        row.appendChild(scoreCell);
-        
-        const awayTeamCell = document.createElement('td');
-        awayTeamCell.textContent = match[5];
-        row.appendChild(awayTeamCell);
+        ['date', 'matchday', 'homeTeam', 'score', 'awayTeam'].forEach((type, index) => {
+            const cell = document.createElement('td');
+            
+            if (type === 'score') {
+                cell.textContent = `${match[3]} - ${match[4]}`;
+                cell.className = 'score-cell';
+            } else {
+                cell.textContent = match[index];
+                cell.className = `${type}-cell`;
+            }
+            
+            row.appendChild(cell);
+        });
         
         secondLegTable.appendChild(row);
     });
-    
-    // Initialize league table
-    updateLeagueTable();
 }
 
-// Tab functionality
-function showTab(tabId) {
-    document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.remove('active');
-    });
+// Process match results and update league table
+function updateLeagueTable() {
+    const allTeams = {};
     
-    document.querySelectorAll('.tab-button').forEach(button => {
-        button.classList.remove('active');
+    // Process all matches from both legs
+    [...firstLegData, ...secondLegData].forEach(match => {
+        const homeTeam = match[2];
+        const awayTeam = match[5];
+        const homeScore = parseInt(match[3]) || 0;
+        const awayScore = parseInt(match[4]) || 0;
+
+        // Initialize teams if not already present
+        if (!allTeams[homeTeam]) allTeams[homeTeam] = initializeTeam();
+        if (!allTeams[awayTeam]) allTeams[awayTeam] = initializeTeam();
+
+        // Only process if scores exist
+        if (match[3] !== '' && match[4] !== '') {
+            updateTeamStats(allTeams[homeTeam], homeScore, awayScore);
+            updateTeamStats(allTeams[awayTeam], awayScore, homeScore);
+        }
     });
-    
-    document.getElementById(tabId).classList.add('active');
-    event.currentTarget.classList.add('active');
+
+    // Convert to array and sort
+    const sortedTeams = Object.entries(allTeams)
+        .map(([name, stats]) => ({ name, ...stats }))
+        .sort((a, b) => b.points - a.points || b.gd - a.gd || b.gf - a.gf);
+
+    // Update league table display
+    const tableBody = document.querySelector('#league-table tbody');
+    if (tableBody) {
+        tableBody.innerHTML = sortedTeams.map((team, index) => `
+            <tr class="${getRowClass(index, sortedTeams.length)}">
+                <td class="pos-cell">${index + 1}</td>
+                <td class="team-cell">${team.name}</td>
+                <td>${team.played}</td>
+                <td>${team.won}</td>
+                <td>${team.drawn}</td>
+                <td>${team.lost}</td>
+                <td>${team.gf}</td>
+                <td>${team.ga}</td>
+                <td class="gd-cell">${team.gd > 0 ? '+' : ''}${team.gd}</td>
+                <td class="pts-cell">${team.points}</td>
+                <td class="form-cell">${generateFormIcons(team.form.slice(0, 5))}</td>
+            </tr>
+        `).join('');
+    }
+}
+
+// Helper functions
+function initializeTeam() {
+    return {
+        played: 0,
+        won: 0,
+        drawn: 0,
+        lost: 0,
+        gf: 0,  // goals for
+        ga: 0,  // goals against
+        gd: 0,  // goal difference
+        points: 0,
+        form: []
+    };
+}
+
+function updateTeamStats(team, goalsFor, goalsAgainst) {
+    team.played++;
+    team.gf += goalsFor;
+    team.ga += goalsAgainst;
+    team.gd = team.gf - team.ga;
+
+    if (goalsFor > goalsAgainst) {
+        team.won++;
+        team.points += 3;
+        team.form.unshift('W');
+    } else if (goalsFor < goalsAgainst) {
+        team.lost++;
+        team.form.unshift('L');
+    } else {
+        team.drawn++;
+        team.points += 1;
+        team.form.unshift('D');
+    }
+}
+
+function getRowClass(position, totalTeams) {
+    if (position < 4) return 'cl';
+    if (position < 6) return 'el';
+    if (position >= totalTeams - 1) return 'relegation';
+    return '';
+}
+
+function generateFormIcons(form) {
+    return form.map(result => {
+        const className = {
+            'W': 'form-win',
+            'D': 'form-draw', 
+            'L': 'form-loss'
+        }[result] || '';
+        return `<div class="form-icon ${className}">${result}</div>`;
+    }).join('');
 }
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', () => {
-    // Load saved data if available
-    const savedFirstLeg = localStorage.getItem('firstLegData');
-    const savedSecondLeg = localStorage.getItem('secondLegData');
-    
-    if (savedFirstLeg) firstLegData = JSON.parse(savedFirstLeg);
-    if (savedSecondLeg) secondLegData = JSON.parse(savedSecondLeg);
-    
-    populateTables();
+    updateAllTables();
 });
