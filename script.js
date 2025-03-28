@@ -2,7 +2,7 @@
 
 // Data from your Excel file
 let firstLegData = [
-    ["Friday 28th March", "Matchday 1", "Mancity Jnr", "8", "7", "NiceFC"],
+    ["Friday 28th March", "Matchday 1", "Mancity Jnr", "", "", "NiceFC"],
     ["Friday 28th March", "Matchday 1", "dblinking", "3", "2", "Mehhh"],
     ["Friday 28th March", "Matchday 1", "OLAMIX FC", "", "", "Barnet FC"],
     ["Friday 28th March", "Matchday 2", "Mancity Jnr", "", "", "dblinking"],
