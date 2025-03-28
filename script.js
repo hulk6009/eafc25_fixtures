@@ -1,13 +1,5 @@
-// Add this at the top of script.js
-let firstLegData = [
-    // Your existing first leg data
-];
-
-let secondLegData = [
-    // Your existing second leg data
-];
 // Data from your Excel file
-const firstLegData = [
+let firstLegData = [
     ["Friday 28th March", "Matchday 1", "Mancity Jnr", "", "", "NiceFC"],
     ["Friday 28th March", "Matchday 1", "dblinking", "3", "2", "Mehhh"],
     ["Friday 28th March", "Matchday 1", "OLAMIX FC", "", "", "Barnet FC"],
@@ -31,7 +23,7 @@ const firstLegData = [
     ["Sunday 30th March", "Matchday 7", "Mehhh", "", "", "OLAMIX FC"]
 ];
 
-const secondLegData = [
+let secondLegData = [
     ["Friday 4th April", "Matchday 8", "NiceFC", "", "", "Mancity Jnr"],
     ["Friday 4th April", "Matchday 8", "Mehhh", "", "", "dblinking"],
     ["Friday 4th April", "Matchday 8", "Barnet FC", "", "", "OLAMIX FC"],
