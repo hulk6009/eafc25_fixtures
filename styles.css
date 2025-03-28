@@ -245,20 +245,6 @@ tr:hover {
     border-left: 3px solid #dc3545;
 }
 
-/* Editable Cells */
-[contenteditable="true"] {
-    padding: 0.3rem;
-    border-radius: 3px;
-    outline: none;
-    min-width: 60px;
-    display: inline-block;
-}
-
-[contenteditable="true"]:focus {
-    background-color: #f0f4ff;
-    box-shadow: 0 0 0 2px var(--accent-color);
-}
-
 /* Notice and Rules Styles */
 .notice {
     background-color: var(--accent-color);
@@ -422,4 +408,10 @@ footer {
     .team-cell {
         font-size: 0.8rem;
     }
+}
+
+.no-data-message {
+    text-align: center; 
+    padding: 2rem;
+    color: #666;
 }
