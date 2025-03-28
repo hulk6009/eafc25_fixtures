@@ -13,7 +13,7 @@
         <div class="tabs">
             <button class="tab-button active" onclick="showTab('first-leg')">First Leg</button>
             <button class="tab-button" onclick="showTab('second-leg')">Second Leg</button>
-	    <button class="tab-button" onclick="window.location.href='table.html'">League Table</button>
+            <button class="tab-button" onclick="window.location.href='table.html'">League Table</button>
         </div>
     </header>
 
@@ -39,7 +39,7 @@
             <table id="second-leg-table">
                 <thead>
                     <tr>
-						<th>Date</th>
+                        <th>Date</th>
                         <th>Matchday</th>
                         <th>Home Team</th>
                         <th>Score</th>
@@ -50,12 +50,13 @@
                     <!-- Data will be inserted by JavaScript -->
                 </tbody>
             </table>
-       	<!-- Add notice below tables -->
+        </div>
+        
+        <!-- Moved these elements outside the tab containers -->
         <div class="notice">
             <p>⏰ All games must be played within 72 hours of scheduled time</p>
         </div>
         
-        <!-- Add rules link button -->
         <div class="rules-link">
             <button onclick="window.location.href='rules.html'">📜 View Competition Rules</button>
         </div>
@@ -64,7 +65,7 @@
     <footer>
         <p>© 2024 EAFC25 Tournament. All rights reserved.</p>
     </footer>
-	
+
     <script src="table.js"></script>
     <script src="script.js"></script>
 </body>
