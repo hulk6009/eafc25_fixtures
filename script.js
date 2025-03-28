@@ -1,7 +1,7 @@
 // Data from your Excel file
 const firstLegData = [
     ["Friday 28th March", "Matchday 1", "Mancity Jnr", "", "", "NiceFC"],
-    ["Friday 28th March", "Matchday 1", "dblinking", "3", "2", "Mehhh"],
+    ["Friday 28th March", "Matchday 1", "dblinking", "", "", "Mehhh"],
     ["Friday 28th March", "Matchday 1", "OLAMIX FC", "", "", "Barnet FC"],
     ["Friday 28th March", "Matchday 2", "Mancity Jnr", "", "", "dblinking"],
     ["Friday 28th March", "Matchday 2", "NiceFC", "", "", "Mehhh"],
@@ -11,10 +11,10 @@ const firstLegData = [
     ["Saturday 29th March", "Matchday 3", "Barnet FC", "", "", "ADX FC"],
     ["Saturday 29th March", "Matchday 4", "Mancity Jnr", "", "", "OLAMIX FC"],
     ["Saturday 29th March", "Matchday 4", "NiceFC", "", "", "Barnet FC"],
-    ["Saturday 29th March", "Matchday 4", "dblinking", "3", "7", "ADX FC"],
+    ["Saturday 29th March", "Matchday 4", "dblinking", "", "", "ADX FC"],
     ["Saturday 29th March", "Matchday 5", "Mancity Jnr", "", "", "Barnet FC"],
     ["Saturday 29th March", "Matchday 5", "NiceFC", "", "", "OLAMIX FC"],
-    ["Sunday 30th March", "Matchday 5", "Mehhh", "4", "5", "ADX FC"],
+    ["Sunday 30th March", "Matchday 5", "Mehhh", "", "", "ADX FC"],
     ["Sunday 30th March", "Matchday 6", "Mancity Jnr", "", "", "ADX FC"],
     ["Sunday 30th March", "Matchday 6", "dblinking", "", "", "OLAMIX FC"],
     ["Sunday 30th March", "Matchday 6", "Mehhh", "", "", "Barnet FC"],
