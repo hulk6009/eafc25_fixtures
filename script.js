@@ -2,7 +2,7 @@
 const firstLegData = [
     ["Friday 28th March", "Matchday 1", "Mancity Jnr", "", "", "NiceFC"],
     ["Friday 28th March", "Matchday 1", "dblinking", "3", "2", "Mehhh"],
-    ["Friday 28th March", "Matchday 1", "OLAMIX FC", "", "", "Barnet FC"],
+    ["Friday 28th March", "Matchday 1", "OLAMIX FC", "0", "0", "Barnet FC"],
     ["Friday 28th March", "Matchday 2", "Mancity Jnr", "", "", "dblinking"],
     ["Friday 28th March", "Matchday 2", "NiceFC", "", "", "Mehhh"],
     ["Friday 28th March", "Matchday 2", "OLAMIX FC", "", "", "ADX FC"],
