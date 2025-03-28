@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EAFC25 League Table</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>EAFC25 League Standings</h1>
+        <button class="back-button" onclick="window.history.back()">← Back to Fixtures</button>
+    </header>
+
+    <main>
+        <div class="league-table-container">
+            <table class="league-table">
+                <thead>
+                    <tr>
+                        <th>Pos</th>
+                        <th class="team-header">Team</th>
+                        <th>P</th>
+                        <th>W</th>
+                        <th>D</th>
+                        <th>L</th>
+                        <th>GF</th>
+                        <th>GA</th>
+                        <th>GD</th>
+                        <th>Pts</th>
+                        <th>Form</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 EAFC25 Tournament. All rights reserved.</p>
+    </footer>
+
+    <script src="table.js"></script>
+</body>
+</html>
