@@ -1,3 +1,11 @@
+// Add this at the top of script.js
+let firstLegData = [
+    // Your existing first leg data
+];
+
+let secondLegData = [
+    // Your existing second leg data
+];
 // Data from your Excel file
 const firstLegData = [
     ["Friday 28th March", "Matchday 1", "Mancity Jnr", "", "", "NiceFC"],
@@ -159,67 +167,30 @@ function createEditableScoreCell(match, homeIndex, awayIndex) {
 
 // Populate fixture tables
 function populateTables() {
-    const firstLegTable = document.querySelector('#first-leg-table tbody');
-    const secondLegTable = document.querySelector('#second-leg-table tbody');
+    // Clear existing tables first
+    document.querySelector('#first-leg-table tbody').innerHTML = '';
+    document.querySelector('#second-leg-table tbody').innerHTML = '';
 
-    // First Leg
+    // Load data from localStorage if available
+    const savedFirstLeg = localStorage.getItem('firstLegData');
+    const savedSecondLeg = localStorage.getItem('secondLegData');
+    
+    if (savedFirstLeg) firstLegData = JSON.parse(savedFirstLeg);
+    if (savedSecondLeg) secondLegData = JSON.parse(savedSecondLeg);
+
+    // Populate First Leg
     firstLegData.forEach(match => {
         const row = document.createElement('tr');
-        
-        const dateCell = document.createElement('td');
-        dateCell.textContent = match[0];
-        dateCell.className = 'date-cell';
-        row.appendChild(dateCell);
-        
-        const matchdayCell = document.createElement('td');
-        matchdayCell.textContent = match[1];
-        matchdayCell.className = 'matchday-cell';
-        row.appendChild(matchdayCell);
-        
-        const homeTeamCell = document.createElement('td');
-        homeTeamCell.textContent = match[2];
-        row.appendChild(homeTeamCell);
-        
-        const scoreCell = createEditableScoreCell(match, 3, 4);
-        row.appendChild(scoreCell);
-        
-        const awayTeamCell = document.createElement('td');
-        awayTeamCell.textContent = match[5];
-        row.appendChild(awayTeamCell);
-        
-        firstLegTable.appendChild(row);
+        // Your existing row creation code
+        document.querySelector('#first-leg-table tbody').appendChild(row);
     });
 
-    // Second Leg
+    // Populate Second Leg
     secondLegData.forEach(match => {
         const row = document.createElement('tr');
-        
-        const dateCell = document.createElement('td');
-        dateCell.textContent = match[0];
-        dateCell.className = 'date-cell';
-        row.appendChild(dateCell);
-        
-        const matchdayCell = document.createElement('td');
-        matchdayCell.textContent = match[1];
-        matchdayCell.className = 'matchday-cell';
-        row.appendChild(matchdayCell);
-        
-        const homeTeamCell = document.createElement('td');
-        homeTeamCell.textContent = match[2];
-        row.appendChild(homeTeamCell);
-        
-        const scoreCell = createEditableScoreCell(match, 3, 4);
-        row.appendChild(scoreCell);
-        
-        const awayTeamCell = document.createElement('td');
-        awayTeamCell.textContent = match[5];
-        row.appendChild(awayTeamCell);
-        
-        secondLegTable.appendChild(row);
+        // Your existing row creation code
+        document.querySelector('#second-leg-table tbody').appendChild(row);
     });
-    
-    // Initialize league table
-    updateLeagueTable();
 }
 
 // Tab functionality
@@ -241,16 +212,14 @@ function showTab(tabId) {
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', () => {
-    // Load saved data if available
-    const savedFirstLeg = localStorage.getItem('firstLegData');
-    const savedSecondLeg = localStorage.getItem('secondLegData');
-    
-    if (savedFirstLeg) firstLegData = JSON.parse(savedFirstLeg);
-    if (savedSecondLeg) secondLegData = JSON.parse(savedSecondLeg);
-    
     populateTables();
+    updateLeagueTable();
     
-    // Restore active tab
-    const activeTab = localStorage.getItem('activeTab') || 'first-leg';
-    showTab(activeTab);
+    // Set up tab switching
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const tabId = this.getAttribute('data-tab');
+            showTab(tabId);
+        });
+    });
 });
