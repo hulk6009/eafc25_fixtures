@@ -238,3 +238,111 @@ footer {
         font-size: 0.8rem;
     }
 }
+/* Add to existing CSS */
+
+/* Notice styles */
+.notice {
+    background-color: var(--accent-color);
+    color: var(--dark-color);
+    padding: 1rem;
+    margin: 2rem auto;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 800px;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.notice p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* Rules link button */
+.rules-link {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.rules-link button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.rules-link button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+/* Rules page specific styles */
+.rules-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+.rules-section {
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.rules-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.rules-section ul {
+    padding-left: 1.5rem;
+}
+
+.rules-section li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.back-button {
+    background: white;
+    color: var(--primary-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+    display: inline-block;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .notice {
+        padding: 0.8rem;
+        margin: 1.5rem 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .rules-link button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .rules-container {
+        padding: 0 1rem;
+    }
+    
+    .rules-section {
+        padding: 1rem;
+    }
+}
