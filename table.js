@@ -74,7 +74,7 @@ window.updateLeagueStandings = function(teams) {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
-    populateLeagueTable(leagueData);
+    initializeLeagueTable();
 });
 
 // Node.js export (if needed)
