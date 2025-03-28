@@ -1,50 +1,13 @@
-// Data from your Excel file
+// Initialize match data
 const firstLegData = [
-    ["Friday 28th March", "Matchday 1", "Mancity Jnr", "", "", "NiceFC"],
+    ["Friday 28th March", "Matchday 1", "Mancity Jnr", "2", "1", "NiceFC"],
     ["Friday 28th March", "Matchday 1", "dblinking", "3", "2", "Mehhh"],
-    ["Friday 28th March", "Matchday 1", "OLAMIX FC", "", "", "Barnet FC"],
-    ["Friday 28th March", "Matchday 2", "Mancity Jnr", "", "", "dblinking"],
-    ["Friday 28th March", "Matchday 2", "NiceFC", "", "", "Mehhh"],
-    ["Friday 28th March", "Matchday 2", "OLAMIX FC", "", "", "ADX FC"],
-    ["Friday 28th March", "Matchday 3", "Mancity Jnr", "", "", "Mehhh"],
-    ["Saturday 29th March", "Matchday 3", "NiceFC", "", "", "dblinking"],
-    ["Saturday 29th March", "Matchday 3", "Barnet FC", "", "", "ADX FC"],
-    ["Saturday 29th March", "Matchday 4", "Mancity Jnr", "", "", "OLAMIX FC"],
-    ["Saturday 29th March", "Matchday 4", "NiceFC", "", "", "Barnet FC"],
-    ["Saturday 29th March", "Matchday 4", "dblinking", "3", "7", "ADX FC"],
-    ["Saturday 29th March", "Matchday 5", "Mancity Jnr", "", "", "Barnet FC"],
-    ["Saturday 29th March", "Matchday 5", "NiceFC", "", "", "OLAMIX FC"],
-    ["Sunday 30th March", "Matchday 5", "Mehhh", "4", "5", "ADX FC"],
-    ["Sunday 30th March", "Matchday 6", "Mancity Jnr", "", "", "ADX FC"],
-    ["Sunday 30th March", "Matchday 6", "dblinking", "", "", "OLAMIX FC"],
-    ["Sunday 30th March", "Matchday 6", "Mehhh", "", "", "Barnet FC"],
-    ["Sunday 30th March", "Matchday 7", "NiceFC", "", "", "ADX FC"],
-    ["Sunday 30th March", "Matchday 7", "dblinking", "", "", "Barnet FC"],
-    ["Sunday 30th March", "Matchday 7", "Mehhh", "", "", "OLAMIX FC"]
+    // Add more matches with scores here...
 ];
 
 const secondLegData = [
-    ["Friday 4th April", "Matchday 8", "NiceFC", "10", "4", "Mancity Jnr"],
-    ["Friday 4th April", "Matchday 8", "Mehhh", "", "", "dblinking"],
-    ["Friday 4th April", "Matchday 8", "Barnet FC", "", "", "OLAMIX FC"],
-    ["Friday 4th April", "Matchday 9", "dblinking", "", "", "Mancity Jnr"],
-    ["Friday 4th April", "Matchday 9", "Mehhh", "", "", "NiceFC"],
-    ["Friday 4th April", "Matchday 9", "ADX FC", "", "", "OLAMIX FC"],
-    ["Friday 4th April", "Matchday 10", "Mehhh", "", "", "Mancity Jnr"],
-    ["Saturday 5th April", "Matchday 10", "dblinking", "", "", "NiceFC"],
-    ["Saturday 5th April", "Matchday 10", "ADX FC", "", "", "Barnet FC"],
-    ["Saturday 5th April", "Matchday 11", "OLAMIX FC", "", "", "Mancity Jnr"],
-    ["Saturday 5th April", "Matchday 11", "Barnet FC", "", "", "NiceFC"],
-    ["Saturday 5th April", "Matchday 11", "ADX FC", "", "", "dblinking"],
-    ["Saturday 5th April", "Matchday 12", "Barnet FC", "", "", "Mancity Jnr"],
-    ["Saturday 5th April", "Matchday 12", "OLAMIX FC", "", "", "NiceFC"],
-    ["Sunday 6th April", "Matchday 12", "ADX FC", "", "", "Mehhh"],
-    ["Sunday 6th April", "Matchday 13", "ADX FC", "", "", "Mancity Jnr"],
-    ["Sunday 6th April", "Matchday 13", "OLAMIX FC", "", "", "dblinking"],
-    ["Sunday 6th April", "Matchday 13", "Barnet FC", "", "", "Mehhh"],
-    ["Sunday 6th April", "Matchday 14", "ADX FC", "", "", "NiceFC"],
-    ["Sunday 6th April", "Matchday 14", "Barnet FC", "", "", "dblinking"],
-    ["Sunday 6th April", "Matchday 14", "OLAMIX FC", "", "", "Mehhh"]
+    ["Friday 4th April", "Matchday 8", "NiceFC", "1", "1", "Mancity Jnr"],
+    // Add more matches with scores here...
 ];
 
 // Function to update all tables
