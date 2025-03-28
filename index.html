@@ -13,6 +13,7 @@
         <div class="tabs">
             <button class="tab-button active" onclick="showTab('first-leg')">First Leg</button>
             <button class="tab-button" onclick="showTab('second-leg')">Second Leg</button>
+	    <button class="tab-button" onclick="showTab('dashboard')">League Dashboard</button>
         </div>
     </header>
 
@@ -50,6 +51,12 @@
                 </tbody>
             </table>
         </div>
+	<div id="dashboard" class="tab-content">
+           <iframe src="https://hulk6009.github.io/eafc25-league/" 
+              style="width:100%; height:800px; border:none;"
+              title="League Dashboard">
+           </iframe>
+         </div>
 	<!-- Add notice below tables -->
         <div class="notice">
             <p>⏰ All games must be played within 72 hours of scheduled time</p>
