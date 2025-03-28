@@ -234,6 +234,9 @@ function showTab(tabId) {
     
     document.getElementById(tabId).classList.add('active');
     event.currentTarget.classList.add('active');
+    
+    // Save the active tab to localStorage
+    localStorage.setItem('activeTab', tabId);
 }
 
 // Initialize the page
@@ -246,4 +249,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savedSecondLeg) secondLegData = JSON.parse(savedSecondLeg);
     
     populateTables();
+    
+    // Restore active tab
+    const activeTab = localStorage.getItem('activeTab') || 'first-leg';
+    showTab(activeTab);
 });
