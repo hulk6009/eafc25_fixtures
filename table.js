@@ -10,7 +10,6 @@ function processLeagueData(data) {
             points: (team.won * 3) + (team.drawn * 1)
         };
     }).sort((a, b) => {
-        // Sort by points, then GD, then GF
         if (b.points !== a.points) return b.points - a.points;
         if (b.goalDifference !== a.goalDifference) return b.goalDifference - a.goalDifference;
         return b.goalsFor - a.goalsFor;
@@ -29,17 +28,16 @@ function generateFormIcons(formArray) {
     }).join('');
 }
 
-// Populate the league table with updated data
+// Populate the league table
 function populateLeagueTable(teamsData) {
     const processedData = processLeagueData(teamsData);
     const tableBody = document.querySelector('#league-table tbody');
     
     tableBody.innerHTML = processedData.map((team, index) => {
-        // Add qualification/relegation classes
         let rowClass = '';
-        if (index < 4) rowClass = 'cl'; // Top 4 - Champions League
-        else if (index < 6) rowClass = 'el'; // Next 2 - Europa League
-        else if (index >= processedData.length - 1) rowClass = 'relegation'; // Bottom - Relegation
+        if (index < 4) rowClass = 'cl';
+        else if (index < 6) rowClass = 'el';
+        else if (index >= processedData.length - 1) rowClass = 'relegation';
         
         return `
             <tr class="${rowClass}">
@@ -60,15 +58,14 @@ function populateLeagueTable(teamsData) {
 }
 
 // Function to update the table from external script
-function updateLeagueStandings(teams) {
+window.updateLeagueStandings = function(teams) {
     leagueData = Object.values(teams);
     populateLeagueTable(leagueData);
-}
+};
 
 // Initialize with empty data if needed
 document.addEventListener('DOMContentLoaded', () => {
     if (leagueData.length === 0) {
-        // Initialize with empty table if no data passed
         document.querySelector('#league-table tbody').innerHTML = `
             <tr>
                 <td colspan="11" style="text-align: center; padding: 2rem;">
@@ -76,8 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </td>
             </tr>
         `;
-    } else {
-        populateLeagueTable(leagueData);
     }
 });
 
