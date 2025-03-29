@@ -12,7 +12,7 @@ let firstLegData = [
     ["Saturday 29th March", "Matchday 3", "NiceFC", "4", "2", "dblinking"],
     ["Saturday 29th March", "Matchday 3", "Barnet FC", "2", "9", "ADX FC"],
     ["Saturday 29th March", "Matchday 4", "Mancity Jnr", "", "", "OLAMIX FC"],
-    ["Saturday 29th March", "Matchday 4", "NiceFC", "", "", "Barnet FC"],
+    ["Saturday 29th March", "Matchday 4", "NiceFC", "5", "6", "Barnet FC"],
     ["Saturday 29th March", "Matchday 4", "dblinking", "3", "7", "ADX FC"],
     ["Saturday 29th March", "Matchday 5", "Mancity Jnr", "9", "5", "Barnet FC"],
     ["Saturday 29th March", "Matchday 5", "NiceFC", "1", "3", "OLAMIX FC"],
