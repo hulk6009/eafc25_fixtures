@@ -41,12 +41,12 @@ let secondLegData = [
     ["Saturday 5th April", "Matchday 12", "Barnet FC", "2", "9", "Mancity Jnr"],
     ["Saturday 5th April", "Matchday 12", "OLAMIX FC", "9", "3", "NiceFC"],
     ["Sunday 6th April", "Matchday 12", "ADX FC", "4", "0", "Mehhh"],
-    ["Sunday 6th April", "Matchday 13", "ADX FC", "", "", "Mancity Jnr"],
+    ["Sunday 6th April", "Matchday 13", "ADX FC", "2", "4", "Mancity Jnr"],
     ["Sunday 6th April", "Matchday 13", "OLAMIX FC", "4", "4", "dblinking"],
     ["Sunday 6th April", "Matchday 13", "Barnet FC", "", "", "Mehhh"],
     ["Sunday 6th April", "Matchday 14", "ADX FC", "6", "2", "NiceFC"],
     ["Sunday 6th April", "Matchday 14", "Barnet FC", "4", "5", "dblinking"],
-    ["Sunday 6th April", "Matchday 14", "OLAMIX FC", "", "", "Mehhh"]
+    ["Sunday 6th April", "Matchday 14", "OLAMIX FC", "8", "3", "Mehhh"]
 ];
 
 function processMatchResults() {
